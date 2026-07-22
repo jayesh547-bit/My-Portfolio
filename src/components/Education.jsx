@@ -1,44 +1,15 @@
 import { motion } from 'framer-motion';
-import SectionHeader from './SectionHeader.jsx';
 import { education } from '../data/portfolio.js';
 
 export default function Education() {
   return (
-    <section id="education" className="bg-pearl text-ink">
-      <div className="section-shell">
-        <SectionHeader
-          eyebrow="Education"
-          title="Academic foundation in Information Technology."
-          copy="A clear education timeline for recruiters to quickly scan qualifications and outcomes."
-        />
-
-        <div className="mt-12 border-l border-slate-200 pl-5 sm:pl-8">
+    <section id="education" className="bg-charcoal">
+      <div className="section-shell !py-16 lg:!py-20">
+        <div className="mb-8 flex items-end justify-between border-b border-cream/10 pb-5"><h2 className="font-display text-2xl font-semibold">Education</h2><span className="font-mono text-[10px] uppercase tracking-[.15em] text-cream/35">Foundation / Timeline</span></div>
+        <div>
           {education.map((item, index) => {
             const Icon = item.icon;
-            return (
-              <motion.article
-                key={`${item.institution}-${item.program}`}
-                className="relative mb-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm last:mb-0"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.35 }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-              >
-                <span className="absolute -left-[2.95rem] top-5 grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-ocean shadow-sm sm:-left-[3.35rem]">
-                  <Icon size={18} />
-                </span>
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold text-ink">{item.institution}</h3>
-                    <p className="mt-1 font-semibold text-slate-700">{item.program}</p>
-                  </div>
-                  {item.period ? (
-                    <span className="rounded-md bg-slate-100 px-3 py-1.5 text-sm font-bold text-slate-700">{item.period}</span>
-                  ) : null}
-                </div>
-                <p className="mt-4 text-sm font-semibold text-ocean">{item.result}</p>
-              </motion.article>
-            );
+            return <motion.article key={item.program} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .06 }} className="grid gap-4 border-b border-cream/10 py-6 sm:grid-cols-[55px_1.3fr_1fr_auto] sm:items-center"><span className="font-mono text-[10px] text-acid">0{index + 1}</span><div><h3 className="font-display text-lg font-semibold">{item.program}</h3><p className="mt-1 text-xs text-cream/40">{item.institution}</p></div><span className="font-mono text-[10px] uppercase tracking-wider text-cream/45">{item.period}</span><span className="flex items-center gap-2 font-display text-xl"><Icon size={16} className="text-coral" />{item.result}</span></motion.article>;
           })}
         </div>
       </div>

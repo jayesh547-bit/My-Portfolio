@@ -11,16 +11,19 @@ import Footer from './components/Footer.jsx';
 
 export default function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-ink text-slate-100">
+    <div className="min-h-screen overflow-x-hidden bg-ink text-cream">
+      <div className="noise" aria-hidden="true" />
       <Navbar />
       <main>
         <Hero />
         <About />
         <Skills />
         <Projects />
-        <Experience />
-        <Certifications />
-        <Education />
+        <div id="journey">
+          <Experience />
+          <Education />
+          <Certifications />
+        </div>
         <Contact />
       </main>
       <Footer />

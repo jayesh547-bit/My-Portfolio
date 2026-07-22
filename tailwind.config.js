@@ -4,19 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#07111f',
-        midnight: '#0b1728',
-        ocean: '#2563eb',
-        aqua: '#2dd4bf',
-        pearl: '#f8fafc',
-        champagne: '#d9b76e',
+        ink: '#10100f',
+        charcoal: '#181816',
+        panel: '#20201d',
+        cream: '#f3efe4',
+        paper: '#e9e3d5',
+        acid: '#d7ff43',
+        coral: '#ff6b4a',
+        electric: '#7898ff',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'Manrope', 'sans-serif'],
+        mono: ['DM Mono', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        glow: '0 24px 80px rgba(37, 99, 235, 0.22)',
-        panel: '0 18px 60px rgba(2, 6, 23, 0.28)',
+        glow: '0 0 60px rgba(215,255,67,.14)',
+        hard: '8px 8px 0 #10100f',
       },
     },
   },

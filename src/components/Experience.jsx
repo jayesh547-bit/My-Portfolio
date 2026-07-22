@@ -4,35 +4,13 @@ import { experience } from '../data/portfolio.js';
 
 export default function Experience() {
   const Icon = experience.icon;
-
   return (
-    <section id="experience" className="bg-ink">
+    <section id="experience" className="border-t border-cream/10 bg-ink">
       <div className="section-shell">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <SectionHeader
-            eyebrow="Experience"
-            title="Salesforce training with hands-on platform fundamentals."
-            copy="A fresher-friendly training experience focused on learning the platform honestly and applying the basics in a small working application."
-          />
-
-          <motion.article
-            className="glass-panel rounded-lg p-6 sm:p-8"
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.55 }}
-          >
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-md bg-champagne/[0.14] text-champagne">
-                <Icon size={28} />
-              </span>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-aqua">{experience.duration}</p>
-                <h3 className="mt-2 text-2xl font-bold text-white">{experience.title}</h3>
-                <p className="mt-1 text-lg font-semibold text-champagne">{experience.organization}</p>
-                <p className="mt-5 text-base leading-8 text-slate-300">{experience.description}</p>
-              </div>
-            </div>
+        <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+          <SectionHeader eyebrow="Journey / Experience" title="Learning by building real things." copy="I’m at the start of my professional journey, bringing curiosity, consistency, and an honest appetite to improve." />
+          <motion.article initial={{ opacity: 0, x: 25 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="border-t border-cream/20 pt-7">
+            <div className="flex gap-5"><span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-acid text-ink"><Icon size={20} /></span><div><div className="flex flex-wrap items-center gap-3"><span className="font-mono text-[10px] uppercase tracking-[.15em] text-acid">{experience.duration}</span><span className="h-px w-8 bg-cream/20" /><span className="font-mono text-[10px] uppercase tracking-[.15em] text-cream/40">Training</span></div><h3 className="mt-4 font-display text-3xl font-semibold">{experience.title}</h3><p className="mt-2 text-coral">{experience.organization}</p><p className="mt-6 max-w-2xl text-sm leading-7 text-cream/55">{experience.description}</p></div></div>
           </motion.article>
         </div>
       </div>

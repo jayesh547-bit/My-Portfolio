@@ -1,87 +1,32 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send } from 'lucide-react';
-import SectionHeader from './SectionHeader.jsx';
-import { contactItems } from '../data/portfolio.js';
+import { ArrowUpRight, Copy, Check } from 'lucide-react';
+import { contactItems, profile } from '../data/portfolio.js';
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+  const copyEmail = async () => {
+    if (!navigator.clipboard) return;
+    await navigator.clipboard.writeText(profile.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+
   return (
-    <section id="contact" className="bg-ink">
-      <div className="section-shell">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+    <section id="contact" className="relative overflow-hidden bg-acid text-ink">
+      <div className="absolute -right-24 top-0 font-display text-[22rem] font-bold leading-none text-ink/[.035]">J</div>
+      <div className="section-shell relative">
+        <p className="font-mono text-xs uppercase tracking-[.2em]">Have an idea? Let’s make it real.</p>
+        <motion.h2 initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 max-w-6xl font-display text-[clamp(3.7rem,10vw,9rem)] font-semibold leading-[.82] tracking-[-.07em]">LET’S BUILD<br />SOMETHING<br /><span className="text-transparent [-webkit-text-stroke:1.5px_#10100f]">MEMORABLE.</span></motion.h2>
+
+        <div className="mt-14 grid gap-10 border-t border-ink/25 pt-8 lg:grid-cols-[1.15fr_.85fr]">
           <div>
-            <SectionHeader
-              eyebrow="Contact"
-              title={"Let's build a clean, responsive web experience."}
-              copy="Reach out for front-end developer roles, internships, project discussions, or collaboration."
-            />
-
-            <div className="mt-8 grid gap-3">
-              {contactItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target={item.href.startsWith('http') ? '_blank' : undefined}
-                    rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
-                    className="focus-ring glass-panel flex items-center gap-4 rounded-lg p-4 transition hover:-translate-y-0.5 hover:border-aqua/40"
-                  >
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-aqua/[0.12] text-aqua">
-                      <Icon size={21} />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-sm font-semibold text-slate-400">{item.label}</span>
-                      <span className="block break-words text-sm font-bold text-white sm:text-base">{item.value}</span>
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
+            <a href={`mailto:${profile.email}?subject=Project enquiry for Jayesh`} className="focus-ring group inline-flex max-w-full items-center gap-3 break-all font-display text-[clamp(1.1rem,4vw,2.25rem)] font-semibold">{profile.email}<span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ink text-acid transition group-hover:rotate-45"><ArrowUpRight size={20} /></span></a>
+            <button onClick={copyEmail} className="focus-ring mt-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[.14em]"><span className="grid h-7 w-7 place-items-center rounded-full border border-ink/25">{copied ? <Check size={13} /> : <Copy size={13} />}</span>{copied ? 'Copied to clipboard' : 'Copy email address'}</button>
           </div>
-
-          <motion.form
-            className="glass-panel rounded-lg p-5 sm:p-7"
-            initial={{ opacity: 0, y: 26 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.55 }}
-            onSubmit={(event) => event.preventDefault()}
-          >
-            <div className="grid gap-5">
-              <label className="grid gap-2 text-sm font-semibold text-slate-200">
-                Name
-                <input
-                  className="focus-ring rounded-md border border-white/[0.12] bg-white/[0.08] px-4 py-3 text-white placeholder:text-slate-500"
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-slate-200">
-                Email
-                <input
-                  className="focus-ring rounded-md border border-white/[0.12] bg-white/[0.08] px-4 py-3 text-white placeholder:text-slate-500"
-                  type="email"
-                  name="email"
-                  placeholder="you@example.com"
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-slate-200">
-                Message
-                <textarea
-                  className="focus-ring min-h-36 resize-y rounded-md border border-white/[0.12] bg-white/[0.08] px-4 py-3 text-white placeholder:text-slate-500"
-                  name="message"
-                  placeholder="Tell me about the role or project"
-                />
-              </label>
-              <button
-                type="submit"
-                className="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-md bg-aqua px-5 py-3 text-sm font-extrabold text-ink shadow-glow transition hover:bg-white"
-              >
-                Send Message <Send size={18} />
-              </button>
-            </div>
-          </motion.form>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-6">
+            {contactItems.slice(1).map((item) => { const Icon = item.icon; const content = <><Icon size={16} /><span><span className="block font-mono text-[9px] uppercase tracking-[.14em] text-ink/50">{item.label}</span><span className="mt-1 block text-xs font-semibold sm:text-sm">{item.value}</span></span></>; return item.href ? <a key={item.label} href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="focus-ring flex items-start gap-3 transition hover:opacity-60">{content}</a> : <div key={item.label} className="flex items-start gap-3">{content}</div>; })}
+          </div>
         </div>
       </div>
     </section>

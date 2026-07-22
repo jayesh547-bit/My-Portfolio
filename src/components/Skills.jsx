@@ -2,42 +2,26 @@ import { motion } from 'framer-motion';
 import SectionHeader from './SectionHeader.jsx';
 import { skillGroups } from '../data/portfolio.js';
 
+const ticker = ['RESPONSIVE UI', 'REACT', 'MOTION', 'ACCESSIBILITY', 'CLEAN CODE', 'CREATIVE DEVELOPMENT'];
+
 export default function Skills() {
   return (
-    <section id="skills" className="relative bg-midnight">
+    <section id="skills" className="overflow-hidden border-y border-cream/10 bg-charcoal">
+      <div className="border-b border-cream/10 py-4">
+        <div className="marquee-track flex gap-8 pr-8 font-display text-2xl font-semibold text-acid/90">
+          {[...ticker, ...ticker].map((item, i) => <span key={`${item}-${i}`} className="flex items-center gap-8 whitespace-nowrap">{item}<span className="text-coral">✦</span></span>)}
+        </div>
+      </div>
       <div className="section-shell">
-        <SectionHeader
-          center
-          eyebrow="Skills"
-          title="A practical toolkit for building polished web interfaces."
-          copy="A focused front-end foundation, supported by development workflows, platform basics, and tools used in real projects."
-        />
-
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <SectionHeader eyebrow="Toolbox / 2026" title="Tools I use to move from idea to interface." copy="A front-end focused toolkit, with enough backend knowledge to understand the full journey of a modern web product." />
+        <div className="mt-14 grid border-l border-t border-cream/10 sm:grid-cols-2 lg:grid-cols-4">
           {skillGroups.map((group, index) => {
             const Icon = group.icon;
             return (
-              <motion.article
-                key={group.title}
-                className="glass-panel rounded-lg p-6 transition hover:-translate-y-1 hover:border-aqua/[0.35]"
-                initial={{ opacity: 0, y: 26 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-              >
-                <div className="mb-5 flex items-center gap-3">
-                  <span className="grid h-11 w-11 place-items-center rounded-md bg-aqua/[0.12] text-aqua">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="text-xl font-bold text-white">{group.title}</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <span key={skill} className="rounded-md border border-white/10 bg-white/[0.08] px-3 py-2 text-sm text-slate-200">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              <motion.article key={group.title} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: index * .08 }} className="group min-h-72 border-b border-r border-cream/10 p-6 transition hover:bg-cream/[.04] sm:p-8">
+                <div className="flex items-center justify-between"><span className="font-mono text-[10px] text-cream/35">0{index + 1}</span><Icon size={22} className="text-acid transition group-hover:rotate-6" /></div>
+                <h3 className="mt-12 font-display text-2xl font-semibold">{group.title}</h3>
+                <ul className="mt-6 space-y-3">{group.skills.map((skill) => <li key={skill} className="flex items-center gap-3 text-sm text-cream/55"><span className="h-px w-4 bg-coral" />{skill}</li>)}</ul>
               </motion.article>
             );
           })}
