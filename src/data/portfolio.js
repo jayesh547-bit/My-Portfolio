@@ -3,30 +3,35 @@ import {
   BadgeCheck,
   BookOpen,
   Braces,
-  BriefcaseBusiness,
   Code2,
   Database,
   Github,
   GraduationCap,
-  LayoutDashboard,
+  LayoutTemplate,
   Linkedin,
   Mail,
   MapPin,
   MonitorSmartphone,
   Phone,
-  Server,
   ShieldCheck,
   Sparkles,
   Terminal,
   Wrench,
+  Zap,
 } from 'lucide-react';
 
-export const navItems = ['About', 'Skills', 'Projects', 'Journey', 'Contact'];
+export const navItems = [
+  { label: 'Home', href: '#home' },
+  { label: 'My story', href: '#story' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Toolkit', href: '#skills' },
+  { label: 'Contact', href: '#contact' },
+];
 
 export const profile = {
   name: 'Jayesh Mehra',
   initials: 'JM',
-  role: 'Front-End Developer',
+  role: 'Creative Front-End Developer',
   education: 'B.Tech in Information Technology',
   location: 'Jaipur, Rajasthan',
   email: 'jayeshmehra547@gmail.com',
@@ -35,78 +40,78 @@ export const profile = {
   github: 'https://github.com/jayesh547-bit',
 };
 
-export const heroBadges = ['React', 'JavaScript', 'Tailwind', 'Motion'];
+export const qualities = ['Creative', 'Reliable', 'Curious', 'Builder', 'Detail-led'];
 
-export const highlights = [
+export const journey = [
   {
-    number: '01',
-    title: 'Interfaces with intent',
-    description: 'Every section has a job: guide attention, communicate value, and make the next action obvious.',
-    icon: Code2,
+    year: '2021',
+    title: 'The foundation',
+    tag: '@college',
+    age: 'B.Tech begins',
+    description: 'Started studying Information Technology and built the technical foundation behind everything I create today.',
   },
   {
-    number: '02',
-    title: 'Responsive by default',
-    description: 'Layouts are designed to feel deliberate on a phone, tablet, laptop, and everything between.',
-    icon: MonitorSmartphone,
+    year: '2024',
+    title: 'From theory to interfaces',
+    tag: '@frontend',
+    age: 'The direction clicks',
+    description: 'HTML, CSS and JavaScript stopped being subjects and became a way to turn ideas into experiences people can use.',
   },
   {
-    number: '03',
-    title: 'Motion that earns its place',
-    description: 'Subtle animation adds rhythm and feedback without getting in the way of usability.',
-    icon: Sparkles,
+    year: '2025',
+    title: 'Graduated. Kept building.',
+    tag: '@react',
+    age: 'B.Tech complete',
+    description: 'Graduated in IT and moved deeper into React, component thinking, responsive layouts and modern development workflows.',
+  },
+  {
+    year: '2026',
+    title: 'Two live experiences',
+    tag: '@launch',
+    age: 'Sweet Crumbs + All For One',
+    description: 'Turned two different brand ideas into live, responsive websites—one warm and indulgent, one focused and high-energy.',
   },
 ];
 
 export const skillGroups = [
-  { title: 'Core', icon: Braces, skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'] },
-  { title: 'Frontend', icon: Terminal, skills: ['React.js', 'Tailwind CSS', 'Framer Motion', 'Vite'] },
-  { title: 'Exploring', icon: Server, skills: ['Node.js', 'SQL', 'REST APIs', 'MongoDB'] },
-  { title: 'Workflow', icon: Wrench, skills: ['Git', 'GitHub', 'VS Code', 'Chrome DevTools'] },
+  { title: 'Frontend Development', icon: Braces, skills: ['React.js', 'JavaScript', 'HTML5', 'CSS3'] },
+  { title: 'Creative Interaction', icon: Sparkles, skills: ['Framer Motion', 'GSAP', 'Lenis', 'Scroll UI'] },
+  { title: 'Responsive Systems', icon: MonitorSmartphone, skills: ['Tailwind CSS', 'Mobile-first', 'Reusable UI', 'Accessibility'] },
+  { title: 'Developer Workflow', icon: Wrench, skills: ['Git', 'GitHub', 'Vite', 'Chrome DevTools'] },
 ];
 
 export const projects = [
   {
     number: '01',
-    title: 'The Daily Crumb',
-    subtitle: 'Artisan bakery experience',
-    type: 'E-commerce UI',
-    tech: ['React', 'Tailwind CSS', 'GSAP', 'Swiper'],
-    description:
-      'A warm, editorial storefront that turns browsing pastries into an experience. Built with reusable product sections, smooth reveals, and a mobile-first flow.',
-    features: ['Product-led storytelling', 'Reusable React sections', 'Mobile-first navigation'],
-    accent: 'coral',
-    github: 'https://github.com/jayesh547-bit/bakery-website',
+    title: 'All For One',
+    category: 'Fitness / Brand Experience',
+    image: '/assets/all-for-one-gym.webp',
+    live: 'https://all-for-one-gym.netlify.app/',
+    github: profile.github,
+    accent: '#b9ff45',
+    text: '#10100f',
+    tech: ['React', 'Tailwind', 'Framer Motion', 'Lenis'],
+    description: 'A cinematic gym website built around strength, motion and focused conversion. Bold type and controlled interaction give the brand a premium training-studio feel.',
   },
   {
     number: '02',
-    title: 'Forge Fitness',
-    subtitle: 'High-energy gym website',
-    type: 'Marketing Website',
-    tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Lenis'],
-    description:
-      'A performance-focused gym website with bold hierarchy, video-led presentation, animated program sections, trainer profiles, and pricing that is easy to compare.',
-    features: ['Immersive hero', 'Animated content flow', 'Conversion-focused pricing'],
-    accent: 'lime',
-    github: profile.github,
-  },
-  {
-    number: '03',
-    title: 'PropertyFlow',
-    subtitle: 'Real-estate operations app',
-    type: 'Salesforce Application',
-    tech: ['Salesforce', 'Apex', 'SOQL', 'SOSL'],
-    description:
-      'A structured Salesforce application for managing properties and client information, created while learning platform automation and data workflows.',
-    features: ['Property data model', 'Client management', 'Automation concepts'],
-    accent: 'blue',
-    github: null,
+    title: 'Sweet Crumbs',
+    category: 'Bakery / E-commerce UI',
+    image: '/assets/sweet-crumbs.webp',
+    live: 'https://sweetcrumbs547.netlify.app/',
+    github: 'https://github.com/jayesh547-bit/bakery-website',
+    accent: '#ffb703',
+    text: '#10100f',
+    tech: ['React', 'Tailwind', 'GSAP', 'Swiper'],
+    description: 'A rich bakery experience pairing dark chocolate visuals with warm golden accents, product storytelling and an inviting mobile-first storefront.',
   },
 ];
 
-export const miniProjects = [
-  { title: 'Sudoku Solver', detail: 'Backtracking and problem solving in C++', icon: LayoutDashboard },
-  { title: 'E-commerce UI', detail: 'Responsive product discovery interface', icon: MonitorSmartphone },
+export const capabilities = [
+  { title: 'Responsive websites', copy: 'Layouts that stay intentional from a small phone to a wide desktop.', icon: MonitorSmartphone },
+  { title: 'React interfaces', copy: 'Clean, reusable components that are easier to extend and maintain.', icon: Code2 },
+  { title: 'Creative motion', copy: 'Animation that creates rhythm, focus and feedback—not distraction.', icon: Zap },
+  { title: 'Design translation', copy: 'Turning references and rough ideas into polished, usable web experiences.', icon: LayoutTemplate },
 ];
 
 export const certifications = [
@@ -118,13 +123,7 @@ export const certifications = [
 ];
 
 export const education = [
-  {
-    institution: 'Arya College of Engineering & IT',
-    program: 'B.Tech — Information Technology',
-    period: '2021 — 2025',
-    result: 'CGPA 7.3',
-    icon: GraduationCap,
-  },
+  { institution: 'Arya College of Engineering & IT', program: 'B.Tech — Information Technology', period: '2021 — 2025', result: 'CGPA 7.3', icon: GraduationCap },
   { institution: 'Modern Academy School', program: 'Rajasthan Board — Class XII', period: '2021', result: '83%', icon: BookOpen },
   { institution: 'Modern Academy School', program: 'Rajasthan Board — Class X', period: '2019', result: '71%', icon: BookOpen },
 ];
@@ -137,11 +136,9 @@ export const contactItems = [
   { label: 'GitHub', value: '@jayesh547-bit', href: profile.github, icon: Github },
 ];
 
-export const experience = {
-  title: 'Salesforce Training / Internship',
-  organization: 'TechForce Academy',
-  duration: '2 months',
-  description:
-    'Learned Salesforce platform fundamentals, Apex, SOQL, SOSL, and automation concepts. Built a working application to organize property and client data.',
-  icon: BriefcaseBusiness,
-};
+export const sideStats = [
+  { value: '02', label: 'Live projects' },
+  { value: '2025', label: 'B.Tech graduate' },
+];
+
+export const sideIcons = { Github, Linkedin, Mail, Terminal };

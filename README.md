@@ -1,6 +1,8 @@
-# Jayesh Mehra — Portfolio
+# Jayesh Mehra — Interactive Portfolio
 
-A custom React portfolio designed around a bold editorial / creative-developer identity.
+A custom React portfolio designed around Jayesh's creative-developer identity, with an interactive story, real project showcases, a floating desktop control panel, and responsive motion.
+
+The opening is a pinned three-stage scene: a large portrait composition, a spring-smoothed zoom/blur depth transition, and a controlled 3D collapse before the story begins. Fine-pointer devices also get mouse parallax, project-card tilt, and dynamic glare. Lenis provides eased wheel scrolling, while section copy uses staggered word reveals.
 
 ## Run locally
 
@@ -18,11 +20,11 @@ npm run preview
 
 ## Update personal content
 
-Most text, profile links, skills, projects, education, and certifications live in:
+Most text, profile links, live URLs, skills, journey, education, and certifications live in:
 
 `src/data/portfolio.js`
 
-Add real live-demo links to each project object when the projects are deployed. The resume download uses:
+The resume download uses:
 
 `public/Jayesh-Mehra-Resume.pdf`
 
@@ -32,6 +34,11 @@ Add real live-demo links to each project object when the projects are deployed. 
 - Tailwind CSS
 - Framer Motion
 - Lucide icons
+
+## Featured live projects
+
+- All For One Gym: https://all-for-one-gym.netlify.app/
+- Sweet Crumbs: https://sweetcrumbs547.netlify.app/
 
 ## Deployment
 
