@@ -6,6 +6,7 @@ import {
   useScroll,
   useSpring,
   useTransform,
+  AnimatePresence,
 } from 'framer-motion';
 import {
   ArrowUpRight,
@@ -76,6 +77,7 @@ export default function Hero() {
   const heroRef = useRef(null);
   const reduceMotion = useReducedMotion();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -224,8 +226,8 @@ export default function Hero() {
           </nav>
         </motion.div>
 
-        {/* Animated Background Text - Outer layer separates scroll from entrance */}
-        <div className="pointer-events-none absolute inset-x-0 top-[6.3rem] z-10 whitespace-nowrap text-center font-display text-[18vw] font-black leading-[.78] tracking-[-.07em] text-acid">
+        {/* Animated Background Text */}
+        <div className="pointer-events-none absolute inset-x-0 top-[6rem] z-10 whitespace-nowrap text-center font-display text-[18vw] font-black leading-[.78] tracking-[-.07em] text-acid">
           <motion.div
             initial={{ x: '15vw', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -236,21 +238,21 @@ export default function Hero() {
         </div>
 
         {/* Typing Texts */}
-        <div className="absolute inset-x-4 top-[18.5%] z-50 flex items-start justify-between gap-4">
+        <div className="absolute inset-x-4 top-[10.5rem] z-50 flex items-start justify-between gap-2">
           <TypingText
             textLines={["The frontend builder.", "That's Jayesh."]}
-            className="w-max font-display text-[13px] font-black leading-[1.15rem] text-ink"
+            className="font-display text-[11px] sm:text-[13px] font-black leading-[1.1rem] text-ink tracking-tight"
             delay={2.8}
           />
           <TypingText
             textLines={["Building bold experiences", "where clean code meets", "creative detail."]}
-            className="w-max text-right font-display text-[12px] font-black leading-[1.05rem] text-ink"
+            className="text-right font-display text-[10.5px] sm:text-[12px] font-black leading-[1.05rem] text-ink tracking-tight"
             delay={3.2}
           />
         </div>
 
-        {/* Portrait - Blur Entrance */}
-        <div className="pointer-events-none absolute inset-x-0 top-[8.4rem] z-20 mx-auto h-[calc(100svh-8.4rem)] w-full">
+        {/* Portrait */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[9rem] z-20 mx-auto w-full">
           <motion.img
             initial={{ opacity: 0, filter: 'blur(20px)', scale: 1.05 }}
             animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
@@ -264,7 +266,7 @@ export default function Hero() {
         </div>
 
         {/* Cards Wrapper */}
-        <div className="absolute left-3 top-[32%] z-40 w-max">
+        <div className="absolute left-3 top-[13rem] z-40 w-max">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -287,7 +289,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="absolute right-3 top-[39%] z-40 w-[8.6rem]">
+        <div className="absolute right-3 top-[18rem] z-40 w-[8.6rem]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -302,7 +304,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="absolute left-3 top-[59%] z-50 w-auto">
+        <div className="absolute left-3 top-[26rem] z-50 w-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -318,8 +320,8 @@ export default function Hero() {
         </div>
 
         {/* Main Heading */}
-        <div className="absolute inset-x-4 bottom-[9.4rem] z-50 flex justify-center">
-          <h1 className="text-left font-display text-[clamp(2.45rem,10.8vw,3.15rem)] font-black leading-[1.05] tracking-[-.065em] text-white">
+        <div className="absolute inset-x-4 bottom-[7.5rem] z-50 flex justify-center text-left">
+          <h1 className="font-display text-[clamp(2.15rem,9.5vw,3.15rem)] font-black leading-[1.05] tracking-[-.05em] text-white">
             {heroTitle.map((line, index) => (
               <span key={line} className="block overflow-hidden pb-[.08em]">
                 <motion.span
@@ -345,9 +347,13 @@ export default function Hero() {
           <a href="#projects" className="focus-ring inline-flex h-12 items-center justify-center rounded-xl bg-acid px-7 font-display text-[13px] font-black text-ink shadow-float">
             See my work
           </a>
-          <a href="/Jayesh-Mehra-Resume.pdf" download className="focus-ring inline-flex h-12 items-center justify-center rounded-xl bg-acid px-7 font-display text-[13px] font-black text-ink shadow-float">
+          <button 
+            type="button"
+            onClick={() => setIsResumeOpen(true)}
+            className="focus-ring inline-flex h-12 items-center justify-center rounded-xl bg-acid px-7 font-display text-[13px] font-black text-ink shadow-float"
+          >
             My resume
-          </a>
+          </button>
         </motion.div>
 
         <div className="absolute bottom-0 left-0 right-0 z-[60] h-1 bg-acid" />
@@ -364,7 +370,7 @@ export default function Hero() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_31%,rgba(244,255,24,.24),transparent_29rem)]" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-ink/[.12] to-transparent" />
 
-          {/* Background Name - Outer controls scroll, Inner controls entry slide */}
+          {/* Background Name */}
           <motion.div
             style={{ scale: nameScale, y: nameY }}
             className="pointer-events-none absolute inset-x-1 top-[2.5svh] z-10 select-none whitespace-nowrap text-center font-display text-[23.5vw] font-black leading-[.72] tracking-[-.095em] text-acid"
@@ -414,7 +420,7 @@ export default function Hero() {
             </motion.nav>
           </motion.div>
 
-          {/* Character Cutout - Outer controls 3D Parallax, Inner controls Blur entry */}
+          {/* Character Cutout */}
           <motion.div
             style={{
               x: foregroundX, y: portraitY, scale: portraitScale, opacity: portraitOpacity,
@@ -526,9 +532,13 @@ export default function Hero() {
                 <a href="#projects" className="focus-ring inline-flex h-12 items-center justify-center rounded-xl bg-acid px-9 font-display text-sm font-black text-ink shadow-float transition hover:-translate-y-1">
                   See my work
                 </a>
-                <a href="/Jayesh-Mehra-Resume.pdf" download className="focus-ring inline-flex h-12 items-center justify-center rounded-xl bg-acid px-9 font-display text-sm font-black text-ink shadow-float transition hover:-translate-y-1">
+                <button 
+                  type="button"
+                  onClick={() => setIsResumeOpen(true)} 
+                  className="focus-ring inline-flex h-12 items-center justify-center rounded-xl bg-acid px-9 font-display text-sm font-black text-ink shadow-float transition hover:-translate-y-1"
+                >
                   My resume
-                </a>
+                </button>
               </motion.div>
             </motion.div>
           </div>
@@ -565,6 +575,45 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
+
+      {/* Resume Modal Popup */}
+      <AnimatePresence>
+        {isResumeOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-[#11110f]/80 p-4 backdrop-blur-sm"
+            onClick={() => setIsResumeOpen(false)} // Background click par band ho jayega
+          >
+            <motion.div 
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()} // Andar click karne par modal band nahi hoga
+              className="relative flex h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-sand shadow-2xl"
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between border-b border-ink/10 p-4">
+                <h3 className="font-display text-lg font-black text-ink">My Resume</h3>
+                <button 
+                  onClick={() => setIsResumeOpen(false)} 
+                  className="rounded-full bg-ink/10 p-2 text-ink transition hover:bg-ink/20"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+              
+              {/* PDF Renderer */}
+              <iframe 
+                src="/Jayesh-Mehra-Resume.pdf" 
+                className="h-full w-full flex-1"
+                title="Jayesh Mehra Resume"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
