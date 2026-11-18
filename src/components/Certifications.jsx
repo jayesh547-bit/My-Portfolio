@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { certifications } from '../data/portfolio.js';
 import RevealWords from './RevealWords.jsx';
+import TiltCard from './TiltCard.jsx';
 
 export default function Certifications() {
   return (
@@ -11,7 +12,7 @@ export default function Certifications() {
           <h2 className="mt-3 font-display text-3xl font-black tracking-[-.04em] text-ink sm:text-5xl">
             <RevealWords text="Verified Technical Credentials." />
           </h2>
-          <p className="mt-4 text-xs font-medium leading-relaxed text-ink/70 sm:text-sm">
+          <p className="mt-4 text-xs font-semibold leading-relaxed text-ink/75 sm:text-sm">
             Formal certifications and technical qualifications validating Linux systems administration, modern React development, and database concepts.
           </p>
         </div>
@@ -26,32 +27,40 @@ export default function Certifications() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.65, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="soft-card flex flex-col justify-between rounded-2xl p-5 transition duration-500 hover:-translate-y-1.5 hover:bg-acid"
+                className="h-full"
               >
-                <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-ink text-acid">
-                      <Icon size={18} />
-                    </span>
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-ink/60">
-                      {cert.issuer}
-                    </span>
-                  </div>
+                <TiltCard
+                  maxTilt={5}
+                  perspective={900}
+                  glare={true}
+                  glareOpacity={0.12}
+                  className="soft-card flex h-full flex-col justify-between rounded-2xl p-5 shadow-sm transition-colors duration-300 hover:bg-acid/95 [transform-style:preserve-3d]"
+                >
+                  <div className="[transform:translateZ(15px)]">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-ink text-acid shadow-sm">
+                        <Icon size={18} />
+                      </span>
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-ink/75">
+                        {cert.issuer}
+                      </span>
+                    </div>
 
-                  <h3 className="mt-4 font-display text-sm font-bold leading-snug text-ink sm:text-base">
-                    {cert.title}
-                  </h3>
+                    <h3 className="mt-4 font-display text-sm font-bold leading-snug text-ink sm:text-base">
+                      {cert.title}
+                    </h3>
 
-                  {cert.detail && (
-                    <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-ink/60">
-                      {cert.detail}
+                    {cert.detail && (
+                      <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-ink/75">
+                        {cert.detail}
+                      </p>
+                    )}
+
+                    <p className="mt-2 text-xs leading-relaxed text-ink/80">
+                      {cert.description}
                     </p>
-                  )}
-
-                  <p className="mt-2 text-xs leading-relaxed text-ink/75">
-                    {cert.description}
-                  </p>
-                </div>
+                  </div>
+                </TiltCard>
               </motion.div>
             );
           })}

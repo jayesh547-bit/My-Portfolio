@@ -32,10 +32,26 @@ export default function SideRail() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.95);
-    onScroll();
+    let rafId = null;
+
+    const checkVisibility = () => {
+      const isPastHero = window.scrollY > window.innerHeight * 0.92;
+      setVisible((prev) => (prev !== isPastHero ? isPastHero : prev));
+      rafId = null;
+    };
+
+    const onScroll = () => {
+      if (!rafId) {
+        rafId = requestAnimationFrame(checkVisibility);
+      }
+    };
+
+    checkVisibility();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const copyEmail = async (e) => {
@@ -54,18 +70,18 @@ export default function SideRail() {
   return (
     <aside
       aria-label="Sidebar quick navigation and contact"
-      className={`fixed bottom-4 left-4 top-4 z-40 hidden w-[18.5rem] flex-col gap-3.5 overflow-y-auto rounded-[2rem] transition duration-500 lg:flex ${
+      className={`fixed bottom-4 left-4 top-4 z-40 hidden w-[18.5rem] flex-col gap-3.5 overflow-y-auto rounded-[2rem] transition duration-500 will-change-transform lg:flex ${
         visible
           ? 'translate-x-0 opacity-100'
           : 'pointer-events-none -translate-x-8 opacity-0'
       }`}
     >
       {/* 1. Profile Block */}
-      <div className="rounded-[1.75rem] bg-black/[0.05] p-5">
+      <div className="rounded-[1.75rem] border border-white/40 bg-black/[0.045] p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] backdrop-blur-md">
         <div className="flex items-center justify-between">
           <a
             href="#home"
-            className="focus-ring rounded-xl bg-acid px-3.5 py-1.5 font-display text-[16px] font-black tracking-tight text-ink"
+            className="focus-ring rounded-xl bg-acid px-3.5 py-1.5 font-display text-[16px] font-black tracking-tight text-ink shadow-sm transition hover:scale-105 active:scale-95"
             aria-label="Jayesh Mehra - Top"
           >
             JM
@@ -75,7 +91,7 @@ export default function SideRail() {
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="grid h-9 w-9 place-items-center rounded-xl bg-ink text-sand transition hover:scale-105"
+              className="focus-ring grid h-9 w-9 place-items-center rounded-xl bg-ink text-sand shadow-sm transition hover:scale-105 hover:text-acid active:scale-95"
               aria-label="Jayesh Mehra on GitHub"
             >
               <Github size={16} />
@@ -84,7 +100,7 @@ export default function SideRail() {
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="grid h-9 w-9 place-items-center rounded-xl bg-ink text-sand transition hover:scale-105"
+              className="focus-ring grid h-9 w-9 place-items-center rounded-xl bg-ink text-sand shadow-sm transition hover:scale-105 hover:text-acid active:scale-95"
               aria-label="Jayesh Mehra on LinkedIn"
             >
               <Linkedin size={16} />
@@ -94,7 +110,7 @@ export default function SideRail() {
         <h2 className="mt-4 font-display text-sm font-extrabold text-ink">
           {profile.name}
         </h2>
-        <p className="mt-1 text-xs text-ink/70">
+        <p className="mt-1 text-xs font-semibold text-ink/75">
           Creative Frontend Developer · B.Tech IT
         </p>
         <p className="mt-3 text-[13px] font-medium leading-relaxed text-ink/80">
@@ -103,7 +119,7 @@ export default function SideRail() {
       </div>
 
       {/* 2. Stats Block */}
-      <div className="grid grid-cols-2 rounded-[1.75rem] bg-black/[0.05] p-4">
+      <div className="grid grid-cols-2 rounded-[1.75rem] border border-white/40 bg-black/[0.045] p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] backdrop-blur-md">
         {sideStats.map((stat, i) => (
           <div
             key={stat.label}
@@ -114,7 +130,7 @@ export default function SideRail() {
             <p className="font-display text-3xl font-black text-ink">
               {stat.value}
             </p>
-            <p className="mt-1 font-display text-[11px] font-bold text-ink/70">
+            <p className="mt-1 font-display text-[11px] font-bold text-ink/75">
               {stat.label}
             </p>
           </div>
@@ -122,12 +138,15 @@ export default function SideRail() {
       </div>
 
       {/* 3. Navigation Block */}
-      <nav className="flex flex-col items-start gap-1.5 rounded-[1.75rem] bg-black/[0.05] p-4" aria-label="Sidebar navigation">
+      <nav
+        className="flex flex-col items-start gap-1.5 rounded-[1.75rem] border border-white/40 bg-black/[0.045] p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] backdrop-blur-md"
+        aria-label="Sidebar navigation"
+      >
         {railNav.map(({ label, href, icon: Icon }) => (
           <a
             key={label}
             href={href}
-            className="focus-ring inline-flex w-full items-center gap-3 rounded-xl bg-white/60 px-3.5 py-2 font-display text-xs font-black uppercase tracking-tight text-ink transition hover:bg-acid"
+            className="focus-ring inline-flex w-full items-center gap-3 rounded-xl border border-white/60 bg-white/70 px-3.5 py-2 font-display text-xs font-black uppercase tracking-tight text-ink shadow-sm transition duration-200 hover:-translate-x-0.5 hover:bg-acid active:scale-[0.98]"
           >
             <Icon size={15} strokeWidth={2.5} />
             {label}
@@ -136,12 +155,12 @@ export default function SideRail() {
       </nav>
 
       {/* 4. Contact & Primary WhatsApp CTA */}
-      <div className="mt-auto flex flex-col gap-2.5 rounded-[1.75rem] bg-black/[0.05] p-4">
+      <div className="mt-auto flex flex-col gap-2.5 rounded-[1.75rem] border border-white/40 bg-black/[0.045] p-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] backdrop-blur-md">
         {/* Email Mailto & Copy */}
-        <div className="flex items-center justify-between gap-2 rounded-xl bg-white/70 px-3.5 py-2.5 text-xs font-bold text-ink">
+        <div className="flex items-center justify-between gap-2 rounded-xl border border-white/60 bg-white/80 px-3.5 py-2.5 text-xs font-bold text-ink shadow-sm">
           <a
             href={profile.emailLink}
-            className="focus-ring truncate transition hover:text-ink/70"
+            className="focus-ring truncate font-mono text-[11px] font-semibold text-ink transition hover:text-ink/70"
             title="Open email in default mail app"
           >
             {profile.email}
@@ -149,7 +168,7 @@ export default function SideRail() {
           <button
             type="button"
             onClick={copyEmail}
-            className="focus-ring ml-auto grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-ink/5 text-ink transition hover:bg-ink/15"
+            className="focus-ring ml-auto grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-ink/5 text-ink transition hover:bg-ink/15 active:scale-90"
             aria-label="Copy email address"
             title="Copy email to clipboard"
           >
@@ -162,7 +181,7 @@ export default function SideRail() {
           href={profile.whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="focus-ring flex w-full items-center justify-center gap-2 rounded-xl bg-acid py-3.5 font-display text-sm font-black text-ink shadow-sm transition hover:-translate-y-0.5 hover:bg-acid/90"
+          className="focus-ring flex w-full items-center justify-center gap-2 rounded-xl bg-acid py-3.5 font-display text-sm font-black text-ink shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-acid/90 hover:shadow-md active:scale-[0.98]"
         >
           <MessageCircle size={16} />
           <span>Chat on WhatsApp</span>

@@ -16,6 +16,7 @@ import {
   X,
 } from 'lucide-react';
 import { profile, qualities } from '../data/portfolio.js';
+import Hero3DCanvas from './Hero3DCanvas.jsx';
 
 const leftLinks = [
   ['Home', '#home'],
@@ -160,15 +161,24 @@ export default function Hero() {
         }
   );
 
+  const pointerRaf = useRef(null);
+
   const handlePointerMove = (event) => {
     if (reduceMotion || event.pointerType === 'touch') return;
 
     const rect = event.currentTarget.getBoundingClientRect();
-    pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
-    pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+    const nx = (event.clientX - rect.left) / rect.width - 0.5;
+    const ny = (event.clientY - rect.top) / rect.height - 0.5;
+
+    if (pointerRaf.current) cancelAnimationFrame(pointerRaf.current);
+    pointerRaf.current = requestAnimationFrame(() => {
+      pointerX.set(nx);
+      pointerY.set(ny);
+    });
   };
 
   const resetPointer = () => {
+    if (pointerRaf.current) cancelAnimationFrame(pointerRaf.current);
     pointerX.set(0);
     pointerY.set(0);
   };
@@ -178,7 +188,7 @@ export default function Hero() {
       {/* Mobile Hero */}
       <div className="relative h-[100svh] min-h-[720px] overflow-hidden bg-sand lg:hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_27%,rgba(244,255,24,.22),transparent_21rem)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-ink/[.16] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-ink/[.45] via-ink/[.2] to-transparent" />
 
         <header className="fixed inset-x-0 top-0 z-[100] flex h-16 items-center justify-between px-4 pt-[env(safe-area-inset-top)]">
           <motion.a
@@ -265,7 +275,10 @@ export default function Hero() {
             transition={{ duration: 1.1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
             src="/assets/jayesh-cutout.webp"
             alt="Jayesh Mehra — Creative Frontend Developer"
+            width="883"
+            height="1782"
             fetchPriority="high"
+            decoding="async"
             draggable="false"
             className="hero-portrait-shadow h-full w-full origin-bottom scale-[1.12] object-contain object-bottom"
           />
@@ -327,7 +340,7 @@ export default function Hero() {
 
         {/* Main Heading Mobile */}
         <div className="absolute inset-x-4 bottom-[7.2rem] z-50 flex justify-center text-left">
-          <h1 className="font-display text-[clamp(2.15rem,9.5vw,3.15rem)] font-black leading-[1.05] tracking-[-.05em] text-white">
+          <h1 className="font-display text-[clamp(2.15rem,9.5vw,3.15rem)] font-black leading-[1.05] tracking-[-.05em] text-white drop-shadow-[0_4px_18px_rgba(17,17,15,0.7)] [text-shadow:0_2px_12px_rgba(17,17,15,0.65)]">
             {heroTitle.map((line, index) => (
               <span key={line} className="block overflow-hidden pb-[.08em]">
                 <motion.span
@@ -352,7 +365,7 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="focus-ring inline-flex h-11 flex-1 max-w-[155px] items-center justify-center rounded-xl bg-acid px-5 font-display text-xs font-black text-ink shadow-float"
+            className="focus-ring inline-flex h-11 flex-1 max-w-[155px] items-center justify-center rounded-xl bg-acid px-5 font-display text-xs font-black text-ink shadow-float transition active:scale-95"
           >
             See my work
           </a>
@@ -378,6 +391,7 @@ export default function Hero() {
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_31%,rgba(244,255,24,.24),transparent_29rem)]" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-ink/[.12] to-transparent" />
+          <Hero3DCanvas />
 
           {/* Background Name */}
           <motion.div
@@ -445,7 +459,10 @@ export default function Hero() {
               transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
               src="/assets/jayesh-cutout.webp"
               alt="Jayesh Mehra — Creative Frontend Developer"
+              width="883"
+              height="1782"
               fetchPriority="high"
+              decoding="async"
               draggable="false"
               className="hero-portrait-shadow h-full w-full object-contain object-bottom"
             />
@@ -525,7 +542,7 @@ export default function Hero() {
           {/* Center Heading & CTAs (Only 2 Primary Buttons: See My Work & My Resume) */}
           <div className="absolute bottom-[6.25rem] left-1/2 z-50 w-max -translate-x-1/2">
             <motion.div style={{ y: contentY, scale: contentScale }}>
-              <h1 className="text-left font-display text-[clamp(2.6rem,4.4vw,5rem)] font-black leading-[1.05] tracking-[-.02em] text-white">
+              <h1 className="text-left font-display text-[clamp(2.6rem,4.4vw,5rem)] font-black leading-[1.05] tracking-[-.02em] text-white drop-shadow-[0_4px_24px_rgba(17,17,15,0.65)] [text-shadow:0_2px_18px_rgba(17,17,15,0.55)]">
                 {heroTitle.map((line, index) => (
                   <span key={line} className="block overflow-hidden pb-[.08em]">
                     <motion.span
@@ -548,7 +565,7 @@ export default function Hero() {
               >
                 <a
                   href="#projects"
-                  className="focus-ring inline-flex h-12 items-center justify-center rounded-xl bg-acid px-9 font-display text-sm font-black text-ink shadow-float transition hover:-translate-y-1 hover:shadow-lg"
+                  className="focus-ring inline-flex h-12 items-center justify-center rounded-xl bg-acid px-9 font-display text-sm font-black text-ink shadow-float transition duration-200 hover:-translate-y-1 hover:shadow-lg active:scale-[0.98]"
                 >
                   See my work
                 </a>
@@ -556,7 +573,7 @@ export default function Hero() {
                 <button
                   type="button"
                   onClick={() => setIsResumeOpen(true)}
-                  className="focus-ring inline-flex h-12 items-center justify-center rounded-xl border border-ink/20 bg-ink px-9 font-display text-sm font-black text-sand shadow-float transition hover:-translate-y-1 hover:text-acid"
+                  className="focus-ring inline-flex h-12 items-center justify-center rounded-xl border border-ink/20 bg-ink px-9 font-display text-sm font-black text-sand shadow-float transition duration-200 hover:-translate-y-1 hover:text-acid active:scale-[0.98]"
                 >
                   My resume
                 </button>

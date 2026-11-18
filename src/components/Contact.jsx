@@ -50,7 +50,7 @@ export default function Contact() {
             {/* Primary Contact Actions */}
             <div className="space-y-6">
               {/* WhatsApp Primary Card */}
-              <div className="rounded-2xl border border-ink/20 bg-ink p-5 text-sand sm:p-6">
+              <div className="rounded-2xl border border-ink/20 bg-ink p-5 text-sand shadow-lg sm:p-6 transition duration-300 hover:shadow-xl">
                 <div className="flex items-center justify-between">
                   <span className="inline-flex items-center gap-2 rounded-full bg-[#25D366]/20 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#25D366]">
                     <span className="h-2 w-2 rounded-full bg-[#25D366] animate-pulse" />
@@ -61,7 +61,7 @@ export default function Contact() {
                 <h3 className="mt-3 font-display text-xl font-black text-sand sm:text-2xl">
                   Chat on WhatsApp
                 </h3>
-                <p className="mt-1 text-xs text-sand/70">
+                <p className="mt-1 text-xs text-sand/75">
                   Direct message for freelance inquiries, design translation, or quick project questions.
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -69,7 +69,7 @@ export default function Contact() {
                     href={profile.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="focus-ring inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 font-display text-xs font-black text-ink shadow-md transition hover:scale-105"
+                    className="focus-ring inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 font-display text-xs font-black text-ink shadow-md transition duration-200 hover:scale-105 active:scale-95"
                     aria-label="Open WhatsApp conversation with Jayesh Mehra"
                   >
                     <span>Open WhatsApp ({profile.phoneDisplay})</span>
@@ -80,7 +80,7 @@ export default function Contact() {
 
               {/* Direct Mailto */}
               <div>
-                <p className="font-mono text-xs font-bold uppercase tracking-wider text-ink/60">
+                <p className="font-mono text-xs font-bold uppercase tracking-wider text-ink/75">
                   Email Me Directly
                 </p>
                 <a
@@ -99,7 +99,7 @@ export default function Contact() {
                   <button
                     type="button"
                     onClick={copyEmail}
-                    className="focus-ring inline-flex items-center gap-2 rounded-lg bg-ink/10 px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[.1em] text-ink transition hover:bg-ink/20"
+                    className="focus-ring inline-flex items-center gap-2 rounded-lg bg-ink/10 px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[.1em] text-ink transition hover:bg-ink/20 active:scale-95"
                     aria-label="Copy email address to clipboard"
                   >
                     <span className="grid h-5 w-5 place-items-center">
@@ -159,20 +159,20 @@ export default function Contact() {
                   href={href}
                   target={external ? '_blank' : undefined}
                   rel={external ? 'noopener noreferrer' : undefined}
-                  className="group flex items-center justify-between rounded-2xl border border-ink/20 bg-sand/40 p-4 font-display text-sm font-bold text-ink transition hover:bg-ink hover:text-acid"
+                  className="group flex items-center justify-between rounded-2xl border border-ink/20 bg-sand/40 p-4 font-display text-sm font-bold text-ink transition duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-acid active:scale-[0.98] shadow-sm hover:shadow-md"
                 >
                   <span className="flex items-center gap-3">
-                    <span className="grid h-8 w-8 place-items-center rounded-lg bg-ink/10 text-ink group-hover:bg-acid/20 group-hover:text-acid">
+                    <span className="grid h-8 w-8 place-items-center rounded-lg bg-ink/10 text-ink group-hover:bg-acid/20 group-hover:text-acid transition-colors">
                       <Icon size={16} />
                     </span>
                     <span>
                       <span className="block text-xs font-bold sm:text-sm">{label}</span>
-                      <span className="block text-[11px] font-normal text-ink/60 group-hover:text-acid/80">
+                      <span className="block text-[11px] font-normal text-ink/75 group-hover:text-acid/80">
                         {detail}
                       </span>
                     </span>
                   </span>
-                  <ArrowUpRight size={16} className="shrink-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight size={16} className="shrink-0 transition duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </motion.a>
               ))}
             </div>

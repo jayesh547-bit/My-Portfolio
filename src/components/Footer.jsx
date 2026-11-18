@@ -9,12 +9,12 @@ export default function Footer() {
           <p className="font-display text-sm font-black text-ink">
             {profile.name} — Creative Frontend Developer
           </p>
-          <p className="mt-1 font-mono text-[10px] uppercase tracking-[.15em] text-ink/60">
+          <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-[.15em] text-ink/75">
             Jaipur, Rajasthan, India · B.Tech in IT · © {new Date().getFullYear()}
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 font-mono text-xs font-semibold text-ink/70">
+        <div className="flex flex-wrap items-center gap-4 font-mono text-xs font-semibold text-ink/75">
           <a
             href={profile.whatsappLink}
             target="_blank"

@@ -12,6 +12,7 @@ import Footer from './components/Footer.jsx';
 import IntroLoader from './components/IntroLoader.jsx';
 import SmoothScroll from './components/SmoothScroll.jsx';
 import WhatsAppButton from './components/WhatsAppButton.jsx';
+import CursorGlow from './components/CursorGlow.jsx';
 
 export default function App() {
   return (
@@ -19,13 +20,14 @@ export default function App() {
       {/* Skip to Main Content Link for Keyboard Accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:rounded-xl focus:bg-acid focus:px-4 focus:py-2 focus:font-display focus:text-xs focus:font-black focus:text-ink focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:rounded-xl focus:bg-acid focus:px-4 focus:py-2 font-display text-xs font-black text-ink shadow-lg outline-none focus:ring-2 focus:ring-ink"
       >
         Skip to main content
       </a>
 
       <IntroLoader />
       <SmoothScroll />
+      <CursorGlow />
       <SideRail />
       <WhatsAppButton />
 

@@ -10,7 +10,7 @@ export default function Education() {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-        className="section-inner soft-card rounded-[2rem] p-5 sm:p-8 lg:p-10"
+        className="section-inner soft-card rounded-[2rem] p-5 shadow-float sm:p-8 lg:p-10"
       >
         <div className="flex flex-col gap-4 border-b border-ink/15 pb-7 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -19,7 +19,7 @@ export default function Education() {
               <RevealWords text="Academic Foundation." />
             </h2>
           </div>
-          <p className="max-w-md text-xs leading-relaxed text-ink/70 sm:text-sm sm:text-right">
+          <p className="max-w-md text-xs font-medium leading-relaxed text-ink/75 sm:text-sm sm:text-right">
             Formal computer science and IT degree supported by deliberate frontend specialization and real-world project builds.
           </p>
         </div>
@@ -34,16 +34,16 @@ export default function Education() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.65, delay: index * 0.08 }}
-                className="group grid gap-4 border-b border-ink/10 py-6 transition last:border-0 sm:grid-cols-[50px_1.5fr_1fr_auto] sm:items-center"
+                className="group grid gap-4 border-b border-ink/10 py-6 px-2 rounded-xl transition duration-300 hover:bg-black/[0.025] last:border-0 sm:grid-cols-[50px_1.5fr_1fr_auto] sm:items-center"
               >
-                <span className="font-mono text-xs font-semibold text-ink/40">0{index + 1}</span>
+                <span className="font-mono text-xs font-semibold text-ink/60">0{index + 1}</span>
                 <div>
                   <h3 className="font-display text-lg font-bold text-ink sm:text-xl">{item.program}</h3>
-                  <p className="mt-1 text-xs font-medium text-ink/65">{item.institution}</p>
-                  <p className="mt-1.5 text-[11px] leading-relaxed text-ink/60">{item.highlight}</p>
+                  <p className="mt-1 text-xs font-semibold text-ink/75">{item.institution}</p>
+                  <p className="mt-1.5 text-[11px] leading-relaxed text-ink/70">{item.highlight}</p>
                 </div>
-                <span className="font-mono text-xs uppercase tracking-wider text-ink/50">{item.period}</span>
-                <span className="flex items-center gap-2 rounded-xl bg-ink/5 px-3 py-2 font-display text-base font-black text-ink transition group-hover:bg-acid sm:text-lg">
+                <span className="font-mono text-xs font-medium uppercase tracking-wider text-ink/65">{item.period}</span>
+                <span className="flex items-center gap-2 rounded-xl bg-ink/5 px-3 py-2 font-display text-base font-black text-ink shadow-sm transition duration-300 group-hover:bg-acid sm:text-lg">
                   <Icon size={16} />
                   {item.result}
                 </span>

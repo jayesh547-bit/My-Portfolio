@@ -35,10 +35,10 @@ export default function About() {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="font-mono text-xs font-medium uppercase tracking-[.28em] text-ink/60 sm:text-sm">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[.28em] text-ink/75 sm:text-sm">
                 01 / About Jayesh
               </p>
-              <p className="mt-5 inline-flex rounded-full border-2 border-ink/30 px-3.5 py-1 font-display text-xs font-black uppercase leading-none tracking-[-.02em] text-ink sm:text-sm">
+              <p className="mt-5 inline-flex rounded-full border-2 border-ink/40 px-3.5 py-1 font-display text-xs font-black uppercase leading-none tracking-[-.02em] text-ink sm:text-sm shadow-sm">
                 Creative Frontend Developer · Jaipur, India
               </p>
               <h2 className="mt-8 font-display text-[clamp(2.75rem,8vw,5.2rem)] font-black leading-[.94] tracking-[-.065em] text-ink">
@@ -87,15 +87,15 @@ export default function About() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   style={{ y }}
-                  className="group bg-sand border-b border-ink/15 px-4 py-8 last:border-0 sm:border-b-0 sm:border-r sm:px-7 sm:first:pl-2 sm:last:border-r-0"
+                  className="group bg-sand border-b border-ink/15 px-4 py-8 last:border-0 sm:border-b-0 sm:border-r sm:px-7 sm:first:pl-2 sm:last:border-r-0 transition duration-300 hover:bg-black/[0.02]"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <p className="font-display text-4xl font-black text-ink lg:text-5xl">{value}</p>
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-ink text-acid transition duration-500 group-hover:rotate-12">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-ink text-acid shadow-sm transition duration-500 group-hover:rotate-12 group-hover:scale-105">
                       <Icon size={19} />
                     </span>
                   </div>
-                  <p className="mt-4 font-mono text-xs font-medium uppercase leading-5 tracking-[.14em] text-ink/70 lg:text-sm">
+                  <p className="mt-4 font-mono text-xs font-semibold uppercase leading-5 tracking-[.14em] text-ink/75 lg:text-sm">
                     {label}
                   </p>
                 </motion.div>

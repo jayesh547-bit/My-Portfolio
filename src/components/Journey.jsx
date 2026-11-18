@@ -91,15 +91,15 @@ export default function Journey() {
                   <h3 className="mt-6 font-display text-2xl font-black tracking-[-.04em] text-ink sm:text-3xl">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/70">
+                  <p className="mt-3 text-sm leading-relaxed text-ink/80">
                     {item.description}
                   </p>
                   <div className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4">
                     <span>
                       <strong className="block font-mono text-xs text-ink">{item.tag}</strong>
-                      <small className="text-xs text-ink/60">{item.age}</small>
+                      <small className="text-xs font-medium text-ink/70">{item.age}</small>
                     </span>
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-ink/10 text-ink">
+                    <span className="grid h-8 w-8 place-items-center rounded-full bg-ink/10 text-ink transition duration-300 group-hover:bg-acid">
                       <ArrowUpRight size={15} />
                     </span>
                   </div>

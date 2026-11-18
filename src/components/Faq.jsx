@@ -15,7 +15,7 @@ export default function Faq() {
             <h2 className="mt-4 font-display text-4xl font-black leading-[.88] tracking-[-.06em] text-ink sm:text-6xl">
               Got Questions? Here Are The Answers.
             </h2>
-            <p className="mt-4 text-xs font-medium leading-relaxed text-ink/70 sm:text-sm">
+            <p className="mt-4 text-xs font-semibold leading-relaxed text-ink/75 sm:text-sm">
               Clear information for both freelance clients planning a project and recruiters evaluating my technical and communication skills.
             </p>
           </div>
@@ -24,7 +24,7 @@ export default function Faq() {
             {faqs.map(({ question, answer }, index) => {
               const isOpen = open === index;
               return (
-                <div key={question} className="border-b border-ink/15">
+                <div key={question} className="border-b border-ink/15 transition-colors duration-200 hover:bg-black/[0.015] px-2 rounded-lg">
                   <button
                     type="button"
                     onClick={() => setOpen(isOpen ? -1 : index)}
@@ -36,7 +36,7 @@ export default function Faq() {
                     <span className="pr-4">{question}</span>
                     <Plus
                       className={`shrink-0 transition duration-300 ${
-                        isOpen ? 'rotate-45 text-ink' : 'text-ink/60'
+                        isOpen ? 'rotate-45 text-ink' : 'text-ink/70'
                       }`}
                       size={20}
                     />
@@ -54,7 +54,7 @@ export default function Faq() {
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="max-w-2xl pb-6 text-xs leading-relaxed text-ink/75 sm:text-sm sm:leading-7">
+                        <p className="max-w-2xl pb-6 text-xs leading-relaxed text-ink/80 sm:text-sm sm:leading-7">
                           {answer}
                         </p>
                       </motion.div>
