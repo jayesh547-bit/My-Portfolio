@@ -464,7 +464,7 @@ export default function Hero() {
               <motion.div animate={floatCard(0.45, 9)}>
                 <a href="#projects" className="focus-ring block rounded-2xl">
                   <div className="flex items-center gap-5 rounded-2xl border border-[#fffae8]/55 bg-gradient-to-br from-[#fdfbf3]/60 via-[#f8f3e2]/45 to-[#f2ecda]/35 px-6 py-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.75),0_18px_40px_rgba(17,17,15,0.06)] backdrop-blur-md transition hover:from-[#fdfbf3]/75 hover:to-[#f5eed6]/55 hover:scale-105">
-                    <p className="font-display text-5xl font-black leading-none text-ink">02</p>
+                    <p className="font-display text-5xl font-black leading-none text-ink">04</p>
                     <p className="whitespace-nowrap font-display text-sm font-black leading-[1.2rem] text-ink">
                       Live<br />Projects
                     </p>

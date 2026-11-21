@@ -177,6 +177,54 @@ export const projects = [
       'Direct order and visit enquiry CTAs',
     ],
   },
+  {
+    number: '03',
+    title: "Yogita's Beauty Parlour",
+    tagline: 'A premium women-only beauty salon experience combining elegant visual storytelling, immersive interactions, and seamless appointment booking.',
+    category: 'Beauty & Wellness / Premium Salon Experience',
+    image: '/assets/yogitas-beauty-parlour.webp',
+    live: 'https://yogita-s-beauty-parlour-beauty-salo.vercel.app/',
+    github: 'https://github.com/jayesh547-bit/YOGITA-S-BEAUTY-PARLOUR-BEAUTY-SALON',
+    accent: '#d4a373',
+    text: '#10100f',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Three.js', 'Framer Motion'],
+    clientNeed:
+      'Exclusive women-only beauty salons need an upscale digital presence that communicates bespoke luxury, hospital-grade hygiene, transparent package pricing, and convenient online or WhatsApp appointment scheduling.',
+    solution:
+      'Designed and developed a luxury salon sanctuary experience featuring curated beauty rituals, bridal packages, specialist profiles, visual storytelling gallery, and an integrated appointment enquiry system.',
+    technicalDetails:
+      'Engineered with Next.js, React, and TypeScript. Integrated responsive Tailwind design tokens, Three.js 3D visual touches, Framer Motion viewport transitions, accessible booking dialogs, and instant WhatsApp inquiry flows.',
+    exploreFeatures: [
+      'Interactive beauty service catalog & rituals',
+      'Curated bridal & self-care beauty packages',
+      'Specialist profiles & salon visual gallery',
+      'Appointment booking with WhatsApp integration',
+    ],
+  },
+  {
+    number: '04',
+    title: 'Bookly SaaS',
+    tagline: 'A modern smart booking and business management platform designed to simplify appointment scheduling and business operations.',
+    category: 'SaaS Platform / Booking Management',
+    image: '/assets/bookly-saas.webp',
+    live: 'https://booklysaas.netlify.app/',
+    github: 'https://github.com/jayesh547-bit/bookly-saas',
+    accent: '#6366f1',
+    text: '#10100f',
+    tech: ['React', 'Tailwind CSS', 'Vite', 'Framer Motion', 'GSAP', 'Recharts'],
+    clientNeed:
+      'Service businesses, studios, and consultants require a streamlined booking management platform that eliminates scheduling friction, presents dynamic pricing tiers, and showcases client operations.',
+    solution:
+      'Developed a modern SaaS product interface featuring an interactive live platform demo, industry-tailored workflows, billing frequency toggles, revenue metric cards, and a clean client CRM dashboard.',
+    technicalDetails:
+      'Built with React, Vite, and Tailwind CSS. Layered Framer Motion and GSAP for micro-interactions, responsive dashboard preview tabs, Recharts analytics components, and dark/light mode toggle support.',
+    exploreFeatures: [
+      'Interactive live demo & dashboard preview',
+      'Industry-tailored workflow showcases',
+      'Tiered subscription pricing with billing toggle',
+      'Client CRM, calendar buffers & analytics presentation',
+    ],
+  },
 ];
 
 export const capabilities = [
@@ -357,6 +405,6 @@ export const contactItems = [
 ];
 
 export const sideStats = [
-  { value: '02', label: 'Live featured projects' },
+  { value: '04', label: 'Live featured projects' },
   { value: '2025', label: 'B.Tech IT graduate' },
 ];
